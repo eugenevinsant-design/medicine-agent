@@ -1,0 +1,35 @@
+[
+  {
+    "full_name": "Иванов Иван Иванович",
+    "birth_date": "1965-03-12",
+    "phone": "+7 999 123-45-67",
+    "policy_number": "1234567890123456",
+    "sex": "M",
+    "age_group": "60-69",
+    "ecg_features": {"rhythm": "sinus", "hr_bpm": 78, "qt_ms": 410, "st_elevation_mm": 0.0},
+    "clinical_signs": "боль в груди, одышка при нагрузке",
+    "source_id": "src_ecg_001"
+  },
+  {
+    "full_name": "Петрова Анна Сергеевна",
+    "birth_date": "1978-11-02",
+    "phone": "8 912 555-33-22",
+    "policy_number": "9876543210987654",
+    "sex": "F",
+    "age_group": "40-49",
+    "ecg_features": {"rhythm": "sinus", "hr_bpm": 92, "qt_ms": 380, "st_elevation_mm": 0.1},
+    "clinical_signs": "сердцебиение, тревога",
+    "source_id": "src_ecg_002"
+  },
+  {
+    "full_name": "Сидоров Пётр Алексеевич",
+    "birth_date": "1952-07-19",
+    "phone": "+7 903 777-88-99",
+    "policy_number": "1111222233334444",
+    "sex": "M",
+    "age_group": "70+",
+    "ecg_features": {"rhythm": "atrial fibrillation", "hr_bpm": 110, "qt_ms": 430, "st_elevation_mm": 0.2},
+    "clinical_signs": "перебои в работе сердца, слабость",
+    "source_id": "src_ecg_003"
+  }
+]

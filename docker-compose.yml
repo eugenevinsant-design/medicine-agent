@@ -1,0 +1,52 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: agentbeer-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"   # REST / dashboard
+      - "6334:6334"   # gRPC
+    volumes:
+      - ./data/qdrant_storage:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: agentbeer-searxng
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docs/searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: agentbeer-openwebui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./data/openwebui:/app/backend/data
+      - ./data/parquet:/app/data/parquet:ro
+    environment:
+      - PARQUET_DIR=/app/data/parquet
+      # --- LLM: OpenAI-совместимый endpoint (OpenRouter primary, Groq fallback) ---
+      - OPENAI_API_BASE_URL=${LLM_API_BASE_URL}
+      - OPENAI_API_KEY=${LLM_API_KEY}
+      # --- Qdrant как векторное хранилище Knowledge ---
+      - VECTOR_DB=qdrant
+      - QDRANT_URI=http://qdrant:6333
+      - QDRANT_COLLECTION_NAME=medical_knowledge
+      # --- Web Search через SearxNG ---
+      - ENABLE_WEB_SEARCH=true
+      - WEB_SEARCH_ENGINE=searxng
+      - SEARXNG_QUERY_URL=http://searxng:8080/search?q=<query>
+      - SEARXNG_URL=http://searxng:8080
+    depends_on:
+      - qdrant
+      - searxng
+
+volumes: {}

@@ -1,0 +1,29 @@
+use_default_settings: true
+
+server:
+  secret_key: change-me-to-random-string
+  limiter: false
+  image_proxy: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  formats:
+    - html
+    - json
+
+# Профильные движки для медицинского поиска.
+# Whitelist доменов реализуется в Tool web_search_whitelist (см. tools/).
+engines:
+  - name: pubmed
+    disabled: false
+  - name: crossref
+    disabled: false
+  - name: semantic scholar
+    disabled: false
+  - name: google
+    disabled: false
+  - name: bing
+    disabled: false
+  - name: duckduckgo
+    disabled: false

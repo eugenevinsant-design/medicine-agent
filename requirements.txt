@@ -1,0 +1,20 @@
+# --- ETL ---
+duckdb>=1.0.0
+pyarrow>=15.0.0
+pandas>=2.0.0
+openpyxl>=3.1.0   # Excel (.xlsx) в etl/loaders.py
+
+# --- Qdrant + эмбеддинги (без GPU) ---
+qdrant-client[fastembed]>=1.9.0
+fastembed>=0.3.0
+
+# --- ФЗ-152: шифрование mapping-таблицы ---
+cryptography>=42.0.0
+
+# --- HTTP / утилиты ---
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# --- Оценка ---
+numpy>=1.26.0
+scikit-learn>=1.4.0   # cohen_kappa, метрики

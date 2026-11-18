@@ -1,0 +1,20 @@
+# Секреты
+.env
+.webui_key
+*.key
+
+# Данные и mapping (ФЗ-152)
+data/
+!data/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Логи и артефакты
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
